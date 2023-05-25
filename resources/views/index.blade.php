@@ -36,11 +36,29 @@
     </div>
 
     <div class="container">
+    @if(Session::has('success'))
+        <div id="success-alert" class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+        <script>
+            setTimeout(function() {
+                document.getElementById('success-alert').remove();
+            }, 5000); 
+        </script>
+    @endif
+    @if(Session::has('error'))
+        <div id="error-alert" class="alert alert-danger">
+            {{ Session::get('error') }}
+        </div>
+        <script>
+            setTimeout(function() {
+                document.getElementById('error-alert').remove();
+            }, 5000); 
+        </script>
+    @endif
 
     <div class="card">
         <div class="card-body">
-           
-
         <form class="row g-3"action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
              @csrf
           
@@ -63,7 +81,7 @@
                     <div class="col">
                     <div class="mb-3">
                             <label for="formFileSm" class="form-label">Formulário</label>
-                            <input class="form-control form-control-sm" id="formFileSm" type="file" name="">
+                            <input class="form-control form-control-sm" id="formFileSm" type="file" name="formulario">
                         </div>
                     </div>
                 </div>
