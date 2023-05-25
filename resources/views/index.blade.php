@@ -61,14 +61,28 @@
         <div class="card-body">
         <form class="row g-3"action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
              @csrf
-          
-            <div class="col-12">
-                <label for="inputAddress" class="form-label">Nome Cliente</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="">
+            
+             <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Nome do Cliente</label>
+                <input type="text" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Contacto</label>
+                <div class="col-12">
+                <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
+                <div class="input-group">
+                <div class="input-group-text">258</div>
+                <input type="number" class="form-control" id="inlineFormInputGroupUsername" maxlength="9">
+                </div>
+            </div>
             </div>
             <div class="col-12">
                 <label for="inputAddress2" class="form-label">Descrição</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="">
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px;"></textarea>
+                    <label for="floatingTextarea">Comentários</label>
+                </div>
+
             </div>
             <div class="col-12">           
                 <div class="row">
