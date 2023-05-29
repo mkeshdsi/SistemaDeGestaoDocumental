@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use ZipArchive;
 use Illuminate\Support\Facades\Response;
+use App\Mail\NotificacaoDocumentoEmail;
+use Illuminate\Support\Facades\Mail;
 
 class UploadController extends Controller
 {
@@ -84,6 +86,9 @@ class UploadController extends Controller
         $documento->formulario_path =$this->directoryFormulario  . '\\' . $fileFormularioName;
 
         $documento->save();
+
+        $email = new NotificacaoDocumentoEmail();
+        Mail::to('macamovanioanibal@gmail.com')->send($email);
     }
 
     public function downloadDocumento($id)
