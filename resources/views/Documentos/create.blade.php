@@ -5,7 +5,7 @@
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <style>
         .yellow-header {
-            background-color: yellow;
+            background-color: #f1cf00;
             padding: 20px;
         }
 
@@ -15,7 +15,7 @@
         }
 
         .yellow-footer {
-            background-color: yellow;
+            background-color: #f1cf00;
             padding: 20px;
             margin-top: auto;
         }

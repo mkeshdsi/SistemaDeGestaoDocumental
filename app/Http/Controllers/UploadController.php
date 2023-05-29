@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use ZipArchive;
+use Illuminate\Support\Facades\Response;
 
 class UploadController extends Controller
 {
@@ -62,7 +64,6 @@ class UploadController extends Controller
             'formulario' => 'required|file',
         ]);
 
-
         $this->createDirectoryIfNotExists($this->directoryFormulario);
 
         $currentTime = date('Y-m-d_H-i-s') .'_'. $request->nome_cliente ;
@@ -71,7 +72,7 @@ class UploadController extends Controller
 
         $this->createDirectoryIfNotExists($this->directoryDocumentoIdentificacao);
 
-        $currentTime = date('Y-m-d_H-i-s');
+        $currentTime = date('Y-m-d_H-i-s') .'_'. $request->nome_cliente ;
         $fileDocumentoName = $currentTime . '_' . $request->file('documentoIdentidade')->getClientOriginalName();
         $request->file('documentoIdentidade')->move($this->directoryDocumentoIdentificacao, $fileDocumentoName);
 
@@ -82,10 +83,35 @@ class UploadController extends Controller
         $documento->documento_path =$this->directoryDocumentoIdentificacao  . '\\' . $fileDocumentoName;
         $documento->formulario_path =$this->directoryFormulario  . '\\' . $fileFormularioName;
 
-
         $documento->save();
+    }
 
-       // Session::flash('success', 'Operação realizada com sucesso!');
-       // return redirect()->back();
+    public function downloadDocumento($id)
+    {
+        $documento = Documento::findOrFail($id);
+    
+        $filePath = $documento->documento_path; 
+        $fileName = basename($filePath);
+    
+        if (File::exists($filePath)) {
+            return Response::download($filePath, $fileName);
+        } else {
+            Session::flash('error', 'Os Ficheiros não foram encontrados.');
+            return redirect()->back();
+        }
+    }
+    
+    public function downloadFormulario($id)
+    {
+        $documento = Documento::findOrFail($id);
+        $filePath = $documento->formulario_path; 
+        $fileName = basename($filePath); 
+
+        if (File::exists($filePath)) {
+            return Response::download($filePath, $fileName);
+        } else {
+            Session::flash('error', 'Os Ficheiros não foram encontrados.');
+            return redirect()->back();
+        }
     }
 }
