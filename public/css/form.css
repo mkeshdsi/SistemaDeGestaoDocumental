@@ -1,0 +1,68 @@
+.main-form {
+    width: 1024px;
+    margin: auto;
+    padding: 20px;
+}
+.services{
+    background-color: rgba(100, 172, 148, 0);
+}
+
+.input-group-prepend .input-group-text {
+    color: #ffffff;
+    background-color: #02826b;
+}
+
+input.form-control {
+    border: 1px solid#02826b;
+    border-radius: 20px 0px;
+}
+
+select.form-control {
+    border: 1px solid#02826b;
+    border-radius: 20px 0px;
+}
+
+textarea.form-control {
+    border: 1px solid#02826b;
+    border-radius: 20px 0px;
+}
+
+
+
+/*textarea.form-control {
+    height: auto;
+    border: 1px solid #02826b;
+}*/
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    background: #02826b;
+}
+
+/*.input-group>.custom-file,
+.input-group>.custom-select,
+.input-group>.form-control {
+
+    border: 1px solid  #02826b;
+}*/
+
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+}
