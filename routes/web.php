@@ -18,9 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index',[App\Http\Controllers\Controller::class,'index']);
+Route::get('/entradaDocumentos',[App\Http\Controllers\Controller::class,'entradaDocumentos']);
 
 Route::post('/upload',[App\Http\Controllers\UploadController::class,'upload'])->name('upload');
+Route::post('/store',[App\Http\Controllers\UploadController::class,'store'])->name('store');
 
 
 
