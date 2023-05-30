@@ -31,5 +31,7 @@ Route::get('/download-documento/{id}', [App\Http\Controllers\UploadController::c
 Route::get('/download-formulario/{id}', [App\Http\Controllers\UploadController::class,'downloadFormulario'])->name('formulario.download');
 
 
-
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
