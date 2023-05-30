@@ -26,7 +26,24 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
-
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+          <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-sign-out"></i>
+                  <span class="hidden-xs">Logout</span>
+              </a>
+              <ul class="dropdown-menu">
+                  <li class="user-header">
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                          @csrf
+                          <button type="submit" class="btn btn-default btn-flat">Logout</button>
+                      </form>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div>
   </nav>
   <!-- /.navbar -->
 
@@ -37,7 +54,7 @@
       <img src="{{asset('img/logo_mkesh.png')}}"  class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Mkesh</span>
     </a>
-
+    
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar Menu -->
