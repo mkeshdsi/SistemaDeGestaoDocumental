@@ -45,16 +45,12 @@ class UploadController extends Controller
             return redirect()->back();
         }
     }
-
-    
-
     private function createDirectoryIfNotExists($directory)
     {
         if (!File::exists($directory)) {
             File::makeDirectory($directory, 0777, true);
         }
     }
-
 
     public function store(Request $request)
     {
@@ -87,9 +83,19 @@ class UploadController extends Controller
 
         $documento->save();
 
-        $email = new NotificacaoDocumentoEmail();
+        $this->sendMail($request->nome_cliente, $request->descricao);
+       
+    }
+
+    public function sendMail($nome_cliente, $descricao)
+    {
+        $subject = 'Envio de Documentos';
+        $mensagem = 'Saudações, Acabam de ser enviados Documentos, poderá fazer o download dos mesmos no Sistema de Gestão Documental.';
+
+        $email = new NotificacaoDocumentoEmail($subject, $nome_cliente, $mensagem,$descricao);
         Mail::to('macamovanioanibal@gmail.com')->send($email);
     }
+
 
     public function downloadDocumento($id)
     {

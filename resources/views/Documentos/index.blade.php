@@ -47,6 +47,7 @@
                       <th>CONTACTO</th>
                       <Th>TIPO PEDIDO</th>
                       <th>DATA<th>
+                      <th>BAICA<th>
                   </tr>
               </thead>
               <tbody>

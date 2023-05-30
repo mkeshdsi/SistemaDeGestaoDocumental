@@ -11,15 +11,22 @@ class NotificacaoDocumentoEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject;
+    public $nome;
+    public $mensagem;
+    public $descricao;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
+   public function __construct($subject,  $nome, $mensagem, $descricao)
+   {
+     $this->subject = $subject;
+     $this->nome = $nome;
+     $this->mensagem = $mensagem;
+     $this->descricao = $descricao;
+   }
 
     /**
      * Build the message.
@@ -28,12 +35,12 @@ class NotificacaoDocumentoEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Exemplo de E-mail')
+        return $this->subject($this->subject)
                     ->view('emails.exemplo_template')
                     ->with([
-                        'nome' => 'Vânio Macamo',
-                        'mensagem' => 'Saudações, Acabam de ser enviados Documentos, Fase de Teste!',
+                        'nome' => $this->nome,
+                        'mensagem' => $this->mensagem,
+                        'descricao' => $this->descricao,
                     ]);
     }
-    
 }
