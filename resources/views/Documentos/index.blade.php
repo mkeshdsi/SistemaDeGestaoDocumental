@@ -47,7 +47,6 @@
                       <th>CONTACTO</th>
                       <Th>TIPO PEDIDO</th>
                       <th>DATA<th>
-                      <th>BAICA<th>
                   </tr>
               </thead>
               <tbody>
@@ -66,7 +65,8 @@
                 </tr>
                 @endforeach
              </tbody>
-            </table>        
+            </table>   
+            {{ $documentos->links('pagination::bootstrap-4') }}     
         </div>
       <div>
 

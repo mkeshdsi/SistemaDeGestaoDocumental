@@ -19,7 +19,7 @@ class Controller extends BaseController
     }
 
     public function index_documentos(){
-        $documentos = Documento::all();
+        $documentos = Documento::orderBy('id', 'desc')->paginate(10);
         return view('documentos.index', compact('documentos'));
     }
 
