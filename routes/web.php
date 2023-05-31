@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Response;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
 
 Route::get('/entradaDocumentos',[App\Http\Controllers\Controller::class,'entradaDocumentos']);
 Route::get('/index_documentos',[App\Http\Controllers\Controller::class,'index_documentos']);
